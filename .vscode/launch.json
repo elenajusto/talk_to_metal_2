@@ -23,6 +23,10 @@
                 "monitor program ${workspaceFolder}/main.elf verify reset"
             ],
             "internalConsoleOptions": "neverOpen",
+            "liveWatch": {
+                "enabled": true,
+                "samplesPerSecond": 4
+            }
         }
     ]
 }
