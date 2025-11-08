@@ -7,7 +7,7 @@
         {
             "name": "Cortex Debug",
             "cwd": "${workspaceFolder}",
-            "executable": "${workspaceFolder}/main.elf",
+            "executable": "${workspaceFolder}/lesson4-control_outside/main.elf",
             "request": "launch",
             "type": "cortex-debug",
             // stop at first CPU instruction
@@ -20,7 +20,7 @@
                 "target/stm32g0x.cfg"
             ],
             "preLaunchCommands": [
-                "monitor program ${workspaceFolder}/main.elf verify reset"
+                "monitor program ${workspaceFolder}/lesson4-control_outside/main.elf verify reset"
             ],
             "internalConsoleOptions": "neverOpen",
             "liveWatch": {
