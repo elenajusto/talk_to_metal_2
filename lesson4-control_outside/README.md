@@ -18,9 +18,5 @@ From the reference manual RM0444, we can see that the memory region responsible 
 ## Viewing GPIO A's Memory
 ![view gpioa memory](images/gpio_view_mem.png)
 
-
-## Turning on GPIO port
-By default the GPIO ports are turned off and has to be initialised, usually this is done by the `startup.c` file provided by the vendor, since we are doing things from scratch we will have to do this ourselves. For now I will do it in `main.c` but later on I might modify my `startup.c` file to do this.
-
 ## Making GPIO port output signal
 We will want to output a DIGITAL HIGH signal and a DIGITAL LOW signal on a timed basis so that the LED will blink.
