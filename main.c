@@ -1,11 +1,14 @@
-int counter = 0;
-
 int main(void) { 
-    int *pointer_integer;               // pointer_integer is a pointer (variable to a memory address) to an integer variable
-    pointer_integer = &counter;         // pointer_integer is now tracking the memory address for the counter variable
+    int *pointer_integer_1;               // a pointer (variable to a memory address) to an integer variable
+    *pointer_integer_1 = 0xDEADBEEF;      // assign the memory located at this pointer to the value 0xDEADBEEF
 
-    while (*pointer_integer < 21) {     // de-referencing allows us to susbtitue the value stored at the pointer/address 
-        (*pointer_integer)++;
-    }
+    int *pointer_integer_2;
+    pointer_integer_2 = (int*)0x20000040;   // directly assign this pointer to a specific flash memory adddress
+    *pointer_integer_2 = 0xCAFED00D;        // assign this piece of memory the value 0xCAFED00D
+
+    int *pointer_integer_3;
+    pointer_integer_3 = (int*)pointer_integer_2+1;    // assign this pointer near pinter 2
+    *pointer_integer_3 = 0xCAFEBABE;                // assign it 0xCAFEBABE
+
     return 0;
 }

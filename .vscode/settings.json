@@ -1,4 +1,4 @@
 {
-    "cortex-debug.variableUseNaturalFormat": true,
+    "cortex-debug.variableUseNaturalFormat": false,
     "discord.enabled": true
 }
