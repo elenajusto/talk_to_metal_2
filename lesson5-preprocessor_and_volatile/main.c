@@ -1,7 +1,7 @@
-#define RCC (int*)(0x40021000)
+#define RCC (0x40021000)
 #define RCC_IOPENR (int*)(RCC + 0x34)
-#define GPIOA (int*)(0x50000000)
-#define GPIOA_MODER (int*)(0x50000000+0x0)
+#define GPIOA (0x50000000)
+#define GPIOA_MODER (int*)(GPIOA + 0x0)
 #define GPIOA_ODR (int*)(GPIOA + 0x14)
 
 int main(void) { 
@@ -11,7 +11,7 @@ int main(void) {
     while(1){
         *GPIOA_ODR = 0x400;
 
-        int counter = 0;
+        volatile int counter = 0;
         while (counter < 1000000) {
             counter++;
         }
