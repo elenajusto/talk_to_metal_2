@@ -28,10 +28,23 @@ int main(void) {
     int *pointer_gpioa_odr;
     pointer_gpioa_odr = (int*)(0x50000000 + 0x14);
 
-    // Set value to 0x400
-    *pointer_gpioa_odr = 0x400;
-    
-    while(1);
+    while(1){
+
+        // Set value to 0x400
+        *pointer_gpioa_odr = 0x400;
+        
+        int counter = 0;
+        while (counter < 1000000) {
+            counter++;
+        }
+        
+        *pointer_gpioa_odr = 0x0;
+
+        counter = 0;
+        while (counter < 1000000) {
+            counter++;
+        }
+    }
 
     return 0;
 }
