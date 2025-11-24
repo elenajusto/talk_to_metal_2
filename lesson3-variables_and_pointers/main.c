@@ -3,7 +3,7 @@ int main(void) {
     *pointer_integer_1 = 0xDEADBEEF;      // assign the memory located at this pointer to the value 0xDEADBEEF
 
     int *pointer_integer_2;
-    pointer_integer_2 = (int*)0x20000040;   // directly assign this pointer to a specific flash memory adddress
+    pointer_integer_2 = (int*)0x20000040;   // directly assign this pointer to a specific RAM memory adddress
     *pointer_integer_2 = 0xCAFED00D;        // assign this piece of memory the value 0xCAFED00D
 
     int *pointer_integer_3;
