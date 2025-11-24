@@ -1,46 +1,37 @@
 int main(void) { 
     
-    // GPIO port mode register (GPIOx_MODER)
-    /* 
-    MODEy[1:0]: Port x configuration I/O pin y (y = 15 to 0) 
-    These bits are written by software to configure the I/O mode. 
-    00: Input mode 
-    01: General purpose output mode 
-    10: Alternate function mode 
-    11: Analog mode (reset state)
-    */
+    /* GPIO Ports Clock Enable */
+    // RCC starts at 0x4002 1000
+    // RCC_IOPENR is at 0x4002 1000 + 0x34
+    // RCC_IOPENR default value: 0x0000 0000
+    int *pointer_rcc_iopenr;
+    pointer_rcc_iopenr = (int*)(0x40021000 + 0x34);
 
-    // Set Port A Pin 10 to output mode
+    // Set its value to 0x1 to turn bit 0 to 1
+    *pointer_rcc_iopenr = 0x1;              
 
-    /*
-    Port A starts at 0x5000 0000
-    GPIOx_MODER has offset 0x00 from the start of port
-    Pin 10 which is MODE10[1:0] is at Bit 20 and Bit 21
-    We want Bit 20 and Bit 21 to be 01 (0x1)
-    Bit 20 and Bit 21 default value is 11 (0xB)
-    */
-    int *pointer_moder;
-    pointer_moder = (int*)0x50000000;             // directly assign this pointer to a the MODER register for GPIOA
-    *pointer_moder = 0xEBDFFFFF;                  // assign it 0x1
+    /* NOTE: The clocks to I/O ports can individually be enabled through the RCC_IOPENR register. - 172/1384 RM0444 Rev 6 */
+    /* NOTE: When the clock to a peripheral or I/O port is not active, the read and write accesses to its registers are not effective. - 172/1384 RM0444 Rev 6 */
     
+    /* Set Port A Pin 10 to output mode */
+    // GPIOA starts at 0x5000 0000
+    // GPIOA_MODER is at 0x5000 0000 + 0x00
+    // GPIOA_MODER default value:  0xEBFF FFFF 
+    int *pointer_moder;
+    pointer_moder = (int*)0x50000000;       // expect value 0xEBFF FFFF
+    *pointer_moder = 0xEBDFFFFF;
 
-    // While(1)
-        // GPIO port output data register (GPIOx_ODR) - HIGH
-        /*
-        OD[15:0]: Port output data I/O pin y (y = 15 to 0) 
-        These bits can be read and written by software.  
-        Note: For atomic bit set/reset, the OD bits 
-        can be individually set and/or reset by writing 
-        to the GPIOx_BSRR register (x = A to D, F).
-        */
+    /* Write HIGH to Port A Pin 10 */
+    // GPIOx_ODR address offset 0x14
+    // Default value: 0x0000 0000
+    // So GPIOA_ODR should be 0x5000 0000 + 0x14
+    int *pointer_gpioa_odr;
+    pointer_gpioa_odr = (int*)(0x50000000 + 0x14);
 
-        // Set Port A Pin 10 to 1
-
-        // Delay
-
-        // GPIO port output data register (GPIOx_ODR) - LOW
-
-        // Set Port A Pin 10 to 0
+    // Set value to 0x400
+    *pointer_gpioa_odr = 0x400;
+    
+    while(1);
 
     return 0;
 }
