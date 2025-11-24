@@ -20,3 +20,8 @@ From the reference manual RM0444, we can see that the memory region responsible 
 
 ## Making GPIO port output signal
 We will want to output a DIGITAL HIGH signal and a DIGITAL LOW signal on a timed basis so that the LED will blink.
+
+# Results
+![image_memory](images/image_memory.png)
+
+![image_breadboard](images/image_breadboard.png)
