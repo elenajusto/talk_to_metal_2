@@ -11,4 +11,4 @@ We are now blinking Port A and Port B connected LED's on a breadboard! Using dir
 
 Furthermore since we have the memory addresses of the registers (Clock, Mode, Output Data) we are able to verify the bits we are manipulating using the memory debugger and see how it physically corresponds to a real life component!
 
-![blink]](images/image.png)
+![blink](images/image.png)
